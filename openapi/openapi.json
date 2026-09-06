@@ -1,0 +1,298 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Oly Server API",
+    "description": "Документация для мессенджера Oly",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "getIndex",
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/auth/sign-up": {
+      "post": {
+        "parameters": [],
+        "operationId": "postAuthSign-up",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["username", "password", "email"],
+                "properties": {
+                  "username": {
+                    "maxLength": 50,
+                    "type": "string"
+                  },
+                  "password": {
+                    "maxLength": 255,
+                    "type": "string"
+                  },
+                  "email": {
+                    "format": "email",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": ["username", "password", "email"],
+                "properties": {
+                  "username": {
+                    "maxLength": 50,
+                    "type": "string"
+                  },
+                  "password": {
+                    "maxLength": 255,
+                    "type": "string"
+                  },
+                  "email": {
+                    "format": "email",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": ["username", "password", "email"],
+                "properties": {
+                  "username": {
+                    "maxLength": 50,
+                    "type": "string"
+                  },
+                  "password": {
+                    "maxLength": 255,
+                    "type": "string"
+                  },
+                  "email": {
+                    "format": "email",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/auth/sign-in": {
+      "post": {
+        "parameters": [],
+        "operationId": "postAuthSign-in",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["email", "password"],
+                "properties": {
+                  "email": {
+                    "format": "email",
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": ["email", "password"],
+                "properties": {
+                  "email": {
+                    "format": "email",
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": ["email", "password"],
+                "properties": {
+                  "email": {
+                    "format": "email",
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/chat": {
+      "get": {
+        "parameters": [
+          {
+            "description": "ID текущего пользователя",
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "x-user-id",
+            "required": true
+          }
+        ],
+        "operationId": "getChat",
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/chat/create": {
+      "post": {
+        "parameters": [],
+        "operationId": "postChatCreate",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["creatorId"],
+                "properties": {
+                  "creatorId": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": ["creatorId"],
+                "properties": {
+                  "creatorId": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": ["creatorId"],
+                "properties": {
+                  "creatorId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/chat/{chatId}/participants": {
+      "post": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "chatId",
+            "required": true
+          }
+        ],
+        "operationId": "postChatByChatIdParticipants",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["userId"],
+                "properties": {
+                  "userId": {
+                    "description": "ID пользователя, которого добавляем",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": ["userId"],
+                "properties": {
+                  "userId": {
+                    "description": "ID пользователя, которого добавляем",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "object",
+                "required": ["userId"],
+                "properties": {
+                  "userId": {
+                    "description": "ID пользователя, которого добавляем",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/user": {
+      "get": {
+        "parameters": [
+          {
+            "description": "ID текущего пользователя",
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "x-user-id",
+            "required": true
+          }
+        ],
+        "operationId": "getUser",
+        "responses": {
+          "200": {}
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}
