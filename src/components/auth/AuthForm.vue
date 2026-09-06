@@ -32,7 +32,7 @@ async function register() {
 
     console.log("Пользователь создан:", response.data);
   } catch (error) {
-    console.error("Ошибка Axios:", error.response?.data);
+    console.error("Ошибка Axios:", error);
   }
 }
 </script>
