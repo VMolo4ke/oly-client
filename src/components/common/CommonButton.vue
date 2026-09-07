@@ -7,16 +7,13 @@
 <style lang="scss" scoped>
 .ui-button {
   padding: 12px;
-  background: #000;
+  background: $bg-btn;
   border-radius: 12px;
   color: #fff;
-  border: 1px solid #fff;
   transition: all 0.3s ease;
 
   &:hover {
     background: #fff;
-    color: #000;
-    border: 1px solid #fff;
   }
 }
 </style>

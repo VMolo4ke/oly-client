@@ -44,9 +44,8 @@ watch(inputModel, () => {
   &__input {
     width: 100%;
     padding: 26px 12px 12px;
-    border-radius: 4px;
-    background: transparent;
-    border: 1px solid #ffffff20;
+    border-radius: 10px;
+    background: $bg-input;
     color: #fff;
     transition:
       border 0.3s ease,

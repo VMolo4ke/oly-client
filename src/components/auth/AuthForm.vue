@@ -1,6 +1,8 @@
 <template>
   <div class="auth-form">
+    <img src="@/assets/img/bg-auth.jpg" class="auth-form__img" />
     <div class="auth-form__form">
+      <h1 class="auth-form__title">Регистрация</h1>
       <CommonInput v-model="form.name" placeholder="Никнеймчик"></CommonInput>
       <CommonInput v-model="form.email" placeholder="Email"></CommonInput>
       <CommonInput v-model="form.password" placeholder="Пароль"></CommonInput>
@@ -39,11 +41,18 @@ async function register() {
 
 <style lang="scss" scoped>
 .auth-form {
+  position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
   min-height: 100vh;
   width: 100%;
+
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 
   &__form {
     display: flex;
@@ -51,12 +60,17 @@ async function register() {
     gap: 8px;
     width: 600px;
     padding: 20px;
-    border-radius: 8px;
-    background: #0f0f0f;
+    width: 33%;
+  }
+
+  &__title {
+    @include h1;
+
+    color: #fff;
   }
 
   &__btn {
-    width: max-content;
+    width: 33;
   }
 }
 </style>
