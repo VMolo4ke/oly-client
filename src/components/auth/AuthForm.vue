@@ -3,7 +3,10 @@
     <img src="@/assets/img/bg-auth.jpg" class="auth-form__img" />
     <div class="auth-form__form">
       <h1 class="auth-form__title">Регистрация</h1>
-      <CommonInput v-model="form.name" placeholder="Никнеймчик"></CommonInput>
+      <CommonInput
+        v-model="form.username"
+        placeholder="Никнеймчик"
+      ></CommonInput>
       <CommonInput v-model="form.email" placeholder="Email"></CommonInput>
       <CommonInput v-model="form.password" placeholder="Пароль"></CommonInput>
       <CommonButton @click="register" class="auth-form__btn"
@@ -14,13 +17,16 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 import { reactive } from "vue";
 import CommonButton from "../common/CommonButton.vue";
 import CommonInput from "../common/CommonInput.vue";
 import axios from "axios";
 
+const router = useRouter();
+
 const form = reactive({
-  name: "",
+  username: "",
   email: "",
   password: "",
 });
@@ -33,6 +39,8 @@ async function register() {
     );
 
     console.log("Пользователь создан:", response.data);
+
+    router.push("/");
   } catch (error) {
     console.error("Ошибка Axios:", error);
   }
@@ -52,13 +60,13 @@ async function register() {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: -1;
   }
 
   &__form {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    width: 600px;
     padding: 20px;
     width: 33%;
   }

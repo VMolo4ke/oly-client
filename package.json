@@ -7,14 +7,16 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "tauri": "tauri"
+    "tauri": "tauri",
+    "api:generate": "bun scripts/generate-api.ts"
   },
   "dependencies": {
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-opener": "^2",
     "axios": "^1.20.0",
     "pinia": "^4.0.3",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2",

@@ -1,10 +1,8 @@
-<script setup lang="ts">
-import AuthForm from "./components/auth/AuthForm.vue";
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <main class="container">
-    <AuthForm />
+    <RouterView />
   </main>
 </template>
 
