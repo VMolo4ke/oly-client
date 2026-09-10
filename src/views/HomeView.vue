@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import ProfileMain from "../components/profile/ProfileMain.vue";
+</script>
+
 <template>
-  <h1>Дом, родной дом</h1>
+  <ProfileMain />
 </template>
